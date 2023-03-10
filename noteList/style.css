@@ -1,0 +1,100 @@
+:root{
+    --main-color: rgba(142, 68, 173,1.0);
+    --main-color-light: rgba(241, 196, 15,0.5);
+    --accent-color: rgba(127, 140, 141,1.0);
+    --accent-color-light: rgba(127, 140, 141,0.5);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to bottom right, var(--main-color), var(--main-color-light));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.main-title{
+    font-size: 3rem;
+    color: white;
+}
+
+.header, .note-form{
+    min-height: 20vh;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-item{
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    border: none;
+    outline: none;
+    background-color:white;
+}
+
+.form-btn{
+    color: var(--accent-color);
+    cursor: pointer;
+}
+.form-btn:hover{
+    color: white;
+    background-color: var(--accent-color);
+}
+
+.note-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-list{
+    list-style: none;
+    min-width: 40%;
+}
+
+.note-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    background-color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.note-content{
+    flex:1;
+    padding: 1rem;
+}
+
+.note-btn{
+    background-color:var(--accent-color-light);
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1.2rem;
+    cursor: pointer;
+}
+
+.note-delete{
+    background-color: rgba(147, 38, 38, 0.533);
+}
+
+.note-blur{
+    opacity: 0.5;
+}
+
+.fa-solid{
+    pointer-events: none;
+}
+
+.deletEfect{
+    transform: scale(0);
+}
