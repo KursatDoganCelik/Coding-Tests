@@ -123,5 +123,43 @@ while(number){
 }
 answer = thingToCheck  //906609
 
+// Q7 - What is the 10 001st prime number?
+number = 0
+let primeCounter = 0
+while(primeCounter < 101){ //change 101 to 10001 for answer
+  if(isPrime(number))
+    primeCounter++
+  number++
+}
+number--  //because number increases when exiting the loop
+
+answer = number  //104743
+
+// Q8 - There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+// Find the product abc. a < b < c 
+function isPythagoreanTriplet(a, b, c){
+  result = true
+  if(a*a + b*b != c*c)
+  return false
+  return result
+}
+let a, b , c = 1000  //most biggest possible for c
+
+while(c > 333){  //most smallest possible for c
+  c--
+  a = 1
+  b = 1000 - (a + c) 
+
+  do{
+    if(isPythagoreanTriplet(a, b, c))
+      break
+    ++a; --b
+  }while(b > a)
+
+  if(isPythagoreanTriplet(a, b, c))
+    break
+}
+answer = a * b * c  //31875000
+
 
 console.log("Answer: " + answer )
