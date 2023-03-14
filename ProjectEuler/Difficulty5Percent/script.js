@@ -42,14 +42,13 @@ answer = squareOfSum - sumOfSquare  //25164150
 function isPrime(value){
   let isPrime = true
   if(value == 0 || value == 1){
-    isPrime = false
-    return isPrime
+    return false
   }
-  for(let i = 2; i <= value / 2; i++){
+  for(let i = 2; i <= Math.sqrt(value); i++){
     if(value % i == 0)
-      isPrime = false
+      return false
   }
-  return isPrime
+  return true
 }
 
 function multItselfLessTwenty(value){
@@ -160,6 +159,41 @@ while(c > 333){  //most smallest possible for c
     break
 }
 answer = a * b * c  //31875000
+
+// Q9 - Find the thirteen adjacent digits in the 1000-digit number that have the 
+// greatest product. What is the value of this product?
+number = "This number is contains in https://projecteuler.net/problem=8"
+let array = number.split("")
+let biggestValue = 0, value = 1; a = 0
+for(let i = 0; i < 988; i++){
+  for(let j = 0; j < 13; j++){
+    value *= array[a + j]
+  }
+  if(value > biggestValue)
+    biggestValue = value
+  value = 1
+  ++a
+}
+answer = biggestValue  //23514624000
+
+// Q10 - Find the sum of all the primes below two million.
+sum = 0, number = 20//change two million
+for(let i = 0; i < number; i++){
+  if(isPrime(i))
+    sum += i
+}
+answer = sum  //142913828922
+
+// Q11 - What is the sum of the digits of the number 2^1000?
+number = BigInt(Math.pow(2, 1000)).toString()
+array = number.split("")
+let index = 0; sum = 0
+
+while(array[index]){
+  sum += parseInt(array[index])
+  index++
+}
+answer = sum
 
 
 console.log("Answer: " + answer )
