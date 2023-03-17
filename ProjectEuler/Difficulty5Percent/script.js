@@ -195,5 +195,73 @@ while(array[index]){
 }
 answer = sum
 
+// Q12 - What is the greatest product of four adjacent numbers in the 
+// same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+number = "This number is contains in https://projecteuler.net/problem=11"
+let numberArray = number.split(" ")
+
+array = [] 
+let tempArray = [], greatestProduct = 0, rows = 20, columns = 20
+
+a = 0  //create 20*20 grid
+for(let i = 0; i < rows; i++){
+  for(let j = 0; j < columns; j++){
+    tempArray.push(parseInt(numberArray[a]))
+    a++
+  }
+  array[i] = tempArray
+  tempArray = []
+}
+
+for(let i = 0; i < rows; i++){
+  for (let j = 0; j < columns -3; j++) {
+    //check letf and right
+    sum = array[i][j] * array[i][j + 1] * array[i][j + 2] * array[i][j + 3]
+    if(sum > greatestProduct)
+      greatestProduct = sum
+
+    //check up and down
+    sum = array[j][i] * array[j + 1][i] * array[j + 2][i] * array[j + 3][i]
+    if(sum > greatestProduct)
+    greatestProduct = sum
+  }
+}
+
+for(let i = 0; i < rows -3; i++){
+  for(let j = 0; j < columns -3; j++){
+    //check diagonally down 
+    sum = array[i][j] * array[i + 1][j + 1] * array[i + 2][j + 2] * array[i + 3][j + 3]
+    if(sum > greatestProduct)
+      greatestProduct = sum
+
+    //check diagonally up 
+    sum = array[i + 3][j] * array[i + 2][j + 1] * array[i + 1][j + 2] * array[i][j + 3]
+    if(sum > greatestProduct)
+      greatestProduct = sum
+  }
+}
+answer = greatestProduct  //70600674
+
+// Q13 - Find the sum of the digits in the number 100!
+let factorial = value => {
+  let temp = value - 1
+  for(temp; temp > 0; temp--){
+    value *= temp
+  }
+  return value
+}
+
+number = BigInt(factorial(100)) //! this is a work wrong after 22!
+array = number.toString().split("")
+//convert to integer back and sum
+sum = 0
+array.forEach(value => {
+  value = parseInt(value)
+  sum += value
+})
+answer = sum  //! 734 but this answer is wrong, this should be 648
+//so many hours of attempt i give up and the correct solituon is in this site:
+//https://helloacm.com/compute-factorial-digit-sum-find-the-sum-of-the-digits-in-the-number-100/
+
 
 console.log("Answer: " + answer )
